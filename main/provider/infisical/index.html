@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2766,6 +2766,8 @@
       
         
       
+        
+      
     
     
     
@@ -2883,6 +2885,34 @@
     
   
     Azure Key Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barbican/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barbican
   
 
     
@@ -3971,6 +4001,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#custom-ca-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom CA Certificates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom CA Certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-cabundle-inline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using caBundle (inline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-caprovider-from-secret-or-configmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using caProvider (from Secret or ConfigMap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4912,6 +4981,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#custom-ca-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom CA Certificates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom CA Certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-cabundle-inline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using caBundle (inline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-caprovider-from-secret-or-configmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using caProvider (from Secret or ConfigMap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4977,6 +5085,19 @@
 <span class="w">      </span><span class="c1">#</span>
 <span class="w">      </span><span class="c1"># Override this if you are using a different Infisical instance.</span>
 <span class="w">      </span><span class="nt">hostAPI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://app.infisical.com</span>
+
+<span class="w">      </span><span class="c1"># Optional: PEM-encoded CA bundle for self-hosted instances with private CAs.</span>
+<span class="w">      </span><span class="c1"># caBundle: &quot;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t...&quot;</span>
+
+<span class="w">      </span><span class="c1"># Optional: Reference to Secret or ConfigMap containing CA certificate.</span>
+<span class="w">      </span><span class="c1"># Mutually exclusive with caBundle.</span>
+<span class="w">      </span><span class="c1"># caProvider:</span>
+<span class="w">      </span><span class="c1">#   type: Secret  # or ConfigMap</span>
+<span class="w">      </span><span class="c1">#   name: infisical-ca</span>
+<span class="w">      </span><span class="c1">#   key: ca.crt</span>
+<span class="w">      </span><span class="c1">#   # namespace is required for ClusterSecretStore</span>
+<span class="w">      </span><span class="c1">#   # namespace: external-secrets</span>
+
 <span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">universalAuthCredentials</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">clientId</span><span class="p">:</span>
@@ -5091,6 +5212,62 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">find</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB_</span>
 </code></pre></div>
+<h2 id="custom-ca-certificates">Custom CA Certificates</h2>
+<p>If you are using a self-hosted Infisical instance with a self-signed certificate or a certificate signed by a private CA, you can configure the provider to trust it.</p>
+<h3 id="using-cabundle-inline">Using caBundle (inline)</h3>
+<p>You can provide the CA certificate directly as a base64-encoded PEM bundle:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SecretStore</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infisical</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">infisical</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">hostAPI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://my-infisical.example.com</span>
+<span class="w">      </span><span class="c1"># Base64-encoded PEM certificate</span>
+<span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t...&quot;</span>
+<span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">universalAuthCredentials</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clientId</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clientId</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">universal-auth-credentials</span>
+<span class="w">          </span><span class="nt">clientSecret</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clientSecret</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">universal-auth-credentials</span>
+<span class="w">      </span><span class="nt">secretsScope</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projectSlug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-project</span>
+<span class="w">        </span><span class="nt">environmentSlug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+</code></pre></div>
+<h3 id="using-caprovider-from-secret-or-configmap">Using caProvider (from Secret or ConfigMap)</h3>
+<p>Alternatively, you can reference a Secret or ConfigMap containing the CA certificate:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SecretStore</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infisical</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">infisical</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">hostAPI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://my-infisical.example.com</span>
+<span class="w">      </span><span class="nt">caProvider</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infisical-ca</span>
+<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
+<span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">universalAuthCredentials</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clientId</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clientId</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">universal-auth-credentials</span>
+<span class="w">          </span><span class="nt">clientSecret</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clientSecret</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">universal-auth-credentials</span>
+<span class="w">      </span><span class="nt">secretsScope</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">projectSlug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-project</span>
+<span class="w">        </span><span class="nt">environmentSlug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For <code>ClusterSecretStore</code>, be sure to set <code>namespace</code> in <code>caProvider</code>.</p>
+</div>
 
 
 
@@ -5153,10 +5330,10 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

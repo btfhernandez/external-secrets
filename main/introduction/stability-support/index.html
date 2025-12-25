@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2895,6 +2895,8 @@
       
         
       
+        
+      
     
     
     
@@ -3011,6 +3013,34 @@
     
   
     Azure Key Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/barbican/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barbican
   
 
     
@@ -4947,34 +4977,46 @@ As of version 0.14.x , this is the only kubernetes version that we will guarante
 </thead>
 <tbody>
 <tr>
+<td>1.2</td>
+<td>1.34</td>
+<td>Dec 19, 2025</td>
+<td>Release of next minor</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>1.34</td>
+<td>Nov 21, 2025</td>
+<td>Release of next minor</td>
+</tr>
+<tr>
 <td>1.0</td>
 <td>1.34</td>
-<td>November 7, 2025</td>
-<td>Release of 1.1</td>
+<td>Nov 7, 2025</td>
+<td>Release of next minor</td>
 </tr>
 <tr>
 <td>0.20.x</td>
 <td>1.34</td>
-<td>September 22, 2025</td>
-<td>Release of 0.21</td>
+<td>Sep 22, 2025</td>
+<td>Nov 7, 2025</td>
 </tr>
 <tr>
 <td>0.19.x</td>
 <td>1.33</td>
-<td>August 2, 2025</td>
-<td>September 22, 2025</td>
+<td>Aug 2, 2025</td>
+<td>Sep 22, 2025</td>
 </tr>
 <tr>
 <td>0.18.x</td>
 <td>1.33</td>
-<td>July 17, 2025</td>
-<td>August 2, 2025</td>
+<td>Jul 17, 2025</td>
+<td>Aug 2, 2025</td>
 </tr>
 <tr>
 <td>0.17.x</td>
 <td>1.33</td>
 <td>May 14, 2025</td>
-<td>July 17, 2025</td>
+<td>Jul 17, 2025</td>
 </tr>
 <tr>
 <td>0.16.x</td>
@@ -5137,7 +5179,7 @@ As of version 0.14.x , this is the only kubernetes version that we will guarante
 <tr>
 <td>Alibaba Cloud KMS</td>
 <td style="text-align: right;">alpha</td>
-<td style="text-align: right;"><strong>UNMAINTAINED</strong></td>
+<td style="text-align: right;"><strong>DEPRECATED</strong></td>
 </tr>
 <tr>
 <td><a href="https://external-secrets.io/latest/provider/oracle-vault">Oracle Vault</a></td>
@@ -5201,8 +5243,8 @@ As of version 0.14.x , this is the only kubernetes version that we will guarante
 </tr>
 <tr>
 <td><a href="https://external-secrets.io/latest/provider/secretserver">SecretServer</a></td>
-<td style="text-align: right;">alpha</td>
-<td style="text-align: right;"><a href="https://github.com/pacificcode/">@billhamilton</a></td>
+<td style="text-align: right;">beta</td>
+<td style="text-align: right;"><a href="https://github.com/gmurugezan">@gmurugezan</a></td>
 </tr>
 <tr>
 <td><a href="https://external-secrets.io/latest/provider/pulumi">Pulumi ESC</a></td>
@@ -5248,6 +5290,11 @@ As of version 0.14.x , this is the only kubernetes version that we will guarante
 <td><a href="https://external-secrets.io/latest/provider/ngrok">ngrok</a></td>
 <td style="text-align: right;">alpha</td>
 <td style="text-align: right;"><a href="https://github.com/jonstacks">@jonstacks</a></td>
+</tr>
+<tr>
+<td><a href="https://external-secrets.io/latest/provider/barbican">Barbican</a></td>
+<td style="text-align: right;">alpha</td>
+<td style="text-align: right;"><a href="https://github.com/rkferreira">@rkferreira</a></td>
 </tr>
 </tbody>
 </table>
@@ -5587,6 +5634,16 @@ As of version 0.14.x , this is the only kubernetes version that we will guarante
 <td style="text-align: center;">x</td>
 <td style="text-align: center;"></td>
 </tr>
+<tr>
+<td>Barbican</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
 </tbody>
 </table>
 <h2 id="support-policy">Support Policy</h2>
@@ -5669,10 +5726,10 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2530,10 +2530,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-selectively-disable-reconciliation-of-cluster-wide-resources" class="md-nav__link">
+  <a href="#3-selectively-disable-reconciliation-of-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Selectively Disable Reconciliation of Cluster-Wide Resources
+        3. Selectively Disable Reconciliation of Resources
       
     </span>
   </a>
@@ -3108,6 +3108,8 @@
       
         
       
+        
+      
     
     
     
@@ -3224,6 +3226,34 @@
     
   
     Azure Key Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/barbican/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barbican
   
 
     
@@ -5069,10 +5099,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-selectively-disable-reconciliation-of-cluster-wide-resources" class="md-nav__link">
+  <a href="#3-selectively-disable-reconciliation-of-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Selectively Disable Reconciliation of Cluster-Wide Resources
+        3. Selectively Disable Reconciliation of Resources
       
     </span>
   </a>
@@ -5370,25 +5400,33 @@
 <span class="w">        </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
 </code></pre></div>
-<h3 id="3-selectively-disable-reconciliation-of-cluster-wide-resources">3. Selectively Disable Reconciliation of Cluster-Wide Resources</h3>
-<p>ESO allows you to selectively disable the reconciliation of cluster-wide resources <code>ClusterSecretStore</code>, <code>ClusterExternalSecret</code>, and <code>PushSecret</code>.
-You can disable the installation of CRDs and reconciliation in the Helm chart, or disable reconciliation in the core controller.</p>
+<h3 id="3-selectively-disable-reconciliation-of-resources">3. Selectively Disable Reconciliation of Resources</h3>
+<p>ESO allows you to selectively disable the reconciliation of resources. You can disable reconciliation for:</p>
+<ul>
+<li><strong>Cluster-wide resources</strong>: <code>ClusterSecretStore</code>, <code>ClusterExternalSecret</code></li>
+<li><strong>Namespaced resources</strong>: <code>SecretStore</code>, <code>PushSecret</code></li>
+</ul>
+<p>You can disable the installation of CRDs and reconciliation in the Helm chart, or disable reconciliation in the core controller.</p>
 <p>To disable reconciliation in the Helm chart:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processClusterExternalSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">processClusterStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">processPushSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">processSecretStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>To disable CRD installation in the Helm chart:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">crds</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">createClusterExternalSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">createClusterSecretStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">createSecretStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">createPushSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
-<p>Note that disabling CRD installation for a cluster-wide resource does not automatically disable its reconciliation.
+<p><strong>Warning:</strong> Disabling the <code>SecretStore</code> CRD will prevent ExternalSecrets from referencing namespaced SecretStores. Only use this if you exclusively use ClusterSecretStore.</p>
+<p>Note that disabling CRD installation for a resource does not automatically disable its reconciliation.
 The core controller will issue error logs if the CRD is not installed but the reconciliation is not disabled.</p>
 <p>To disable reconciliation in the core controller, set the following flags:</p>
 <div class="highlight"><pre><span></span><code>--enable-cluster-external-secret-reconciler=false
 --enable-cluster-store-reconciler=false
+--enable-secret-store-reconciler=false
 --enable-push-secret-reconciler=false
 </code></pre></div>
 <h3 id="4-implement-namespace-scoped-installation">4. Implement Namespace-Scoped Installation</h3>
@@ -5735,10 +5773,10 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
