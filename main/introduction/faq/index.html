@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1199,6 +1199,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1512,6 +1516,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/generator/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/generator/password/" class="md-nav__link">
         
   
@@ -1604,6 +1636,34 @@
     
   
     Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/generator/gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gitlab
   
 
     
@@ -2912,6 +2972,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3000,6 +3066,34 @@
     
   
     AWS Parameter Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/aws-certificate-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certificate Manager
   
 
     
@@ -3112,6 +3206,34 @@
     
   
     BeyondTrust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
   
 
     
@@ -3328,6 +3450,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../provider/crd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes CRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../provider/ibm-secrets-manager/" class="md-nav__link">
         
   
@@ -3475,7 +3625,7 @@
   <span class="md-ellipsis">
     
   
-    Github Actions Secrets
+    GitHub Actions and Dependabot Secrets
   
 
     
@@ -5052,10 +5202,12 @@ the <code>external-secrets.io/force-sync</code> annotation on the ClusterExterna
 <div class="highlight"><pre><span></span><code>kubectl get es my-external-secret -o yaml | grep refreshTime
   refreshTime: &quot;2022-05-21T23:02:47Z&quot;
 </code></pre></div>
-<p>The interval can be changed by the <code>spec.refreshInterval</code> in the ExternalSecret. You can also control the refresh behavior by setting <code>spec.refreshPolicy</code> to one of the following options:
-- <code>Periodic</code> (default): Update regularly based on refreshInterval
-- <code>CreatedOnce</code>: Create the Secret only once and never update it afterward
-- <code>OnChange</code>: Only update when the ExternalSecret's metadata or specification changes</p>
+<p>The interval can be changed by the <code>spec.refreshInterval</code> in the ExternalSecret. You can also control the refresh behavior by setting <code>spec.refreshPolicy</code> to one of the following options:</p>
+<ul>
+<li><code>Periodic</code> (default): Update regularly based on refreshInterval</li>
+<li><code>CreatedOnce</code>: Create the Secret only once per ExternalSecret object and never update it afterward (recreating the ExternalSecret re-syncs it, see the <a href="../../api/externalsecret/#createdonce">refresh policy docs</a>)</li>
+<li><code>OnChange</code>: Only update when the ExternalSecret's metadata or specification changes</li>
+</ul>
 <h2 id="how-do-i-know-when-the-status-of-my-secret-changed-the-last-time">How do I know when the status of my secret changed the last time?</h2>
 <p>Every ExternalSecret resource contains a status condition that indicates whether a secret was successfully synchronized, along with the timestamp of the last status change of the ExternalSecret (e.g. from SecretSyncedError to SecretSynced). This can be obtained from the field <code>lastTransitionTime</code>:</p>
 <div class="highlight"><pre><span></span><code>kubectl get es my-external-secret -o yaml | grep condition -A 5
@@ -5177,7 +5329,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

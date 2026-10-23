@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1087,6 +1087,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1400,6 +1404,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/generator/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/generator/password/" class="md-nav__link">
         
   
@@ -1492,6 +1524,34 @@
     
   
     Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/generator/gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gitlab
   
 
     
@@ -2389,6 +2449,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Advanced Path Targeting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-index-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Index Notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2927,6 +3004,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3015,6 +3098,34 @@
     
   
     AWS Parameter Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/aws-certificate-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certificate Manager
   
 
     
@@ -3127,6 +3238,34 @@
     
   
     BeyondTrust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
   
 
     
@@ -3343,6 +3482,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../provider/crd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes CRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../provider/ibm-secrets-manager/" class="md-nav__link">
         
   
@@ -3490,7 +3657,7 @@
   <span class="md-ellipsis">
     
   
-    Github Actions Secrets
+    GitHub Actions and Dependabot Secrets
   
 
     
@@ -5009,6 +5176,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Advanced Path Targeting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-index-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Index Notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5211,6 +5395,19 @@ We recommend not overusing this feature without too many objects until further p
 <span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database/password</span>
 </code></pre></div>
 <p>The <code>target</code> field accepts dot-notation paths like <code>spec.database</code> or <code>spec.logging</code> to place the rendered template output at specific locations in the resource structure. When <code>target</code> is not specified it defaults to <code>Data</code> for backward compatibility with Secrets.</p>
+<h3 id="array-index-notation">Array Index Notation</h3>
+<p>Paths can navigate into arrays using <code>[n]</code> index notation, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec.rules[0].from[0].source.notRemoteIpBlocks</span>
+</code></pre></div>
+<p>This templates a resource like an Istio <code>AuthorizationPolicy</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">notRemoteIpBlocks</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.0/8</span>
+</code></pre></div>
+<p>Intermediate maps and arrays are created if they don't exist yet, and existing sibling keys in the same array element are preserved. Paths must start with a key; a bare leading index like <code>[0].foo</code> is rejected.</p>
 <div class="admonition note">
 <p class="admonition-title">Using <code>property</code> when templating <code>data</code></p>
 <p>The return of <code>data:</code> isn't an object on the template scope. If templated as a <code>string</code> it will fail in finding the right key. Therefore, something like this:
@@ -5350,7 +5547,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

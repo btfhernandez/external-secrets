@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1087,6 +1087,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1400,6 +1404,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/generator/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/generator/password/" class="md-nav__link">
         
   
@@ -1492,6 +1524,34 @@
     
   
     Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/generator/gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gitlab
   
 
     
@@ -2205,6 +2265,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="TemplateFrom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valuesdecodingstrategy-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ValuesDecodingStrategy example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htpasswd-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        htpasswd example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3005,6 +3093,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3093,6 +3187,34 @@
     
   
     AWS Parameter Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/aws-certificate-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certificate Manager
   
 
     
@@ -3205,6 +3327,34 @@
     
   
     BeyondTrust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
   
 
     
@@ -3421,6 +3571,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../provider/crd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes CRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../provider/ibm-secrets-manager/" class="md-nav__link">
         
   
@@ -3568,7 +3746,7 @@
   <span class="md-ellipsis">
     
   
-    Github Actions Secrets
+    GitHub Actions and Dependabot Secrets
   
 
     
@@ -5088,6 +5266,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="TemplateFrom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valuesdecodingstrategy-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ValuesDecodingStrategy example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htpasswd-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        htpasswd example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -5421,8 +5627,85 @@ Example: <strong><code>{{ index .data "service-account-token" }}</code></strong>
 <span class="w">    </span><span class="nt">remoteRef</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/grafana/password</span>
 </code></pre></div>
-<p>Lastly, <code>TemplateFrom</code> also supports adding <code>Literal</code> blocks for quick templating. These <code>Literal</code> blocks differ from <code>Template.Data</code> as they are rendered as a a <code>key:value</code> pair (while the <code>Template.Data</code>, you can only template the value).</p>
-<p>See an example, how to produce a <code>htpasswd</code> file that can be used by an ingress-controller (for example: https://kubernetes.github.io/ingress-nginx/examples/auth/basic/) where the contents of the <code>htpasswd</code> file needs to be presented via the <code>auth</code> key. We use the <code>htpasswd</code> function to create a <code>bcrytped</code> hash of the password.</p>
+<p>Lastly, <code>TemplateFrom</code> also supports adding <code>Literal</code> blocks for quick templating. These <code>Literal</code> blocks differ from <code>Template.Data</code> as they are rendered as a <code>key:value</code> pair (while the <code>Template.Data</code>, you can only template the value).</p>
+<h4 id="valuesdecodingstrategy-example">ValuesDecodingStrategy example</h4>
+<p><code>TemplateFrom</code> entries can also decode rendered values with <code>ValuesDecodingStrategy</code>. This is useful when the template selects Base64-encoded values from structured provider data and the final Kubernetes Secret must contain the decoded bytes.</p>
+<p>For example, imagine several remote secrets matched by <code>dataFrom.find</code> contain JSON values like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;cert&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCg==&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;certificate encoded as base64&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And let's imagine an ExternalSecret definition as this one:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExternalSecret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-certs</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">refreshInterval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+<span class="w">  </span><span class="nt">secretStoreRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterSecretStore</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-secretsmanager</span>
+<span class="w">  </span><span class="nt">dataFrom</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">find</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">regexp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^productA/nginx/.*</span>
+<span class="w">    </span><span class="nt">rewrite</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">regexp</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^productA/nginx/(.*)</span>
+<span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$1</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-certs</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">engineVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
+<span class="w">      </span><span class="nt">templateFrom</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">literal</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">          </span><span class="no">{{- range $key, $val := . }}</span>
+<span class="w">          </span><span class="no">{{- $json := $val | fromJson }}</span>
+<span class="w">          </span><span class="no">{{ $key }}: {{ $json.cert }}</span>
+<span class="w">          </span><span class="no">{{- end }}</span>
+</code></pre></div>
+Without <code>templateFrom[0].ValuesDecodingStrategy</code>, the template will select the <code>cert</code> property, and get the base64 text. The resulting Kubernetes Secret value will be stored as Base64 text.</p>
+<p>Alternatively, you can use the <code>templateFrom[0].valuesDecodingStrategy: Base64</code> as following:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExternalSecret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-certs</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">refreshInterval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+<span class="w">  </span><span class="nt">secretStoreRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterSecretStore</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-secretsmanager</span>
+<span class="w">  </span><span class="nt">dataFrom</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">find</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">regexp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^productA/nginx/.*</span>
+<span class="w">    </span><span class="nt">rewrite</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">regexp</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^productA/nginx/(.*)</span>
+<span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$1</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-certs</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">engineVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
+<span class="w">      </span><span class="nt">templateFrom</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">valuesDecodingStrategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Base64</span>
+<span class="w">        </span><span class="nt">literal</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">          </span><span class="no">{{- range $key, $val := . }}</span>
+<span class="w">          </span><span class="no">{{- $json := $val | fromJson }}</span>
+<span class="w">          </span><span class="no">{{ $key }}: {{ $json.cert }}</span>
+<span class="w">          </span><span class="no">{{- end }}</span>
+</code></pre></div>
+<p>This way, the template still renders safe Base64 text internally.
+ESO then decodes the value and writes the decoded bytes in the Kubernetes Secret's data.
+Only rendered values are decoded; rendered keys are left unchanged.</p>
+<p>In other words, use <code>valuesDecodingStrategy</code> to <code>None</code> when values are not encoded, and our usual strategies like <code>Base64</code>, <code>Base64URL</code> (or even <code>Auto</code>) when values may be either Base64/Base64URL encoded.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is safer for binary data than decoding inside the template with <code>{{ $json.cert | b64dec }}</code>, because <code>b64dec</code> injects raw bytes into the intermediate rendered YAML.</p>
+</div>
+<h4 id="htpasswd-example">htpasswd example</h4>
+<p>See an example, how to produce a <code>htpasswd</code> file that can be used by an ingress-controller (for example: https://kubernetes.github.io/ingress-nginx/examples/auth/basic/) where the contents of the <code>htpasswd</code> file needs to be presented via the <code>auth</code> key. We use the <code>htpasswd</code> function to create a <code>bcrypted</code> hash of the password.</p>
 <p>Suppose you have multiple key-value pairs within your provider secret like</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;user1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;password1&quot;</span><span class="p">,</span>
@@ -5576,13 +5859,17 @@ NtFUGA95RGN9s+pl6XY0YARPHf5O76ErC1OZtDTR5RdyQfcM+94gYZsexsXl0aQO
 <h3 id="rsa-decryption-data-from-provider">RSA Decryption Data From Provider</h3>
 <p>When a provider returns RSA-encrypted values, you can decrypt them directly in the template using the <code>rsaDecrypt</code> functions (engine v2).
 <code>rsaDecrypt</code> performs decryption with the private key passed through the pipeline: <code>&lt;privateKeyPEM | rsaDecrypt "&lt;SCHEME&gt;" "&lt;HASH&gt;" &lt;ciphertext&gt; &gt;</code>. <code>SCHEME</code> and <code>HASH</code> are strings (for example, <code>"RSA-OAEP"</code> and <code>"SHA1"</code>). The third argument must be the ciphertext in binary form.</p>
-<p>Base64 handling: providers often return ciphertext as Base64. You can either:
-- decode in the template with <code>b64dec</code> (for example: <code>(.password_encrypted_base64 | b64dec)</code>), or
-- set <code>decodingStrategy: Base64</code> on the corresponding <code>spec.data.remoteRef</code> so the template receives binary data.</p>
-<p>Prerequisites
-- <code>spec.target.template.engineVersion: v2</code>.
-- A valid RSA private key in PEM format without passphrase (from another reference in the same ExternalSecret).
-- Ciphertext must match the key pair and the chosen algorithm/hash.</p>
+<p>Base64 handling: providers often return ciphertext as Base64. You can either:</p>
+<ul>
+<li>decode in the template with <code>b64dec</code> (for example: <code>(.password_encrypted_base64 | b64dec)</code>), or</li>
+<li>set <code>decodingStrategy: Base64</code> on the corresponding <code>spec.data.remoteRef</code> so the template receives binary data.</li>
+</ul>
+<p>Prerequisites</p>
+<ul>
+<li><code>spec.target.template.engineVersion: v2</code>.</li>
+<li>A valid RSA private key in PEM format without passphrase (from another reference in the same ExternalSecret).</li>
+<li>Ciphertext must match the key pair and the chosen algorithm/hash.</li>
+</ul>
 <p>Full example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExternalSecret</span>
@@ -5617,12 +5904,16 @@ NtFUGA95RGN9s+pl6XY0YARPHf5O76ErC1OZtDTR5RdyQfcM+94gYZsexsXl0aQO
 <span class="w">  </span><span class="c1">#     decodingStrategy: Base64</span>
 <span class="w">  </span><span class="c1"># ...</span>
 </code></pre></div>
-<p>Useful variations (included as comments in the example):
-- Base64 decode in the template with <code>b64dec</code> or via <code>decodingStrategy: Base64</code> on <code>spec.data</code>.
-- Use a private key available in the same ExternalSecret (for example: <code>( .private_key | rsaDecrypt ... )</code>).</p>
-<p>Error notes
-- Referencing a missing key in the template will fail rendering.
-- If key/algorithm/hash do not match the ciphertext, decryption will fail and reconciliation will retry.</p>
+<p>Useful variations (included as comments in the example):</p>
+<ul>
+<li>Base64 decode in the template with <code>b64dec</code> or via <code>decodingStrategy: Base64</code> on <code>spec.data</code>.</li>
+<li>Use a private key available in the same ExternalSecret (for example: <code>( .private_key | rsaDecrypt ... )</code>).</li>
+</ul>
+<p>Error notes</p>
+<ul>
+<li>Referencing a missing key in the template will fail rendering.</li>
+<li>If key/algorithm/hash do not match the ciphertext, decryption will fail and reconciliation will retry.</li>
+</ul>
 <h2 id="templating-with-pushsecret">Templating with PushSecret</h2>
 <p><code>PushSecret</code> templating is much like <code>ExternalSecrets</code> templating. In-fact under the hood, it's using the same data structure.
 Which means, anything described in the above should be possible with push secret as well resulting in a templated secret
@@ -5647,7 +5938,7 @@ created at the provider.</p>
 <h2 id="helper-functions">Helper functions</h2>
 <div class="admonition info inline end">
 <p class="admonition-title">Info</p>
-<p>Note: we removed <code>env</code> and <code>expandenv</code> from sprig functions for security reasons.</p>
+<p>Note: we removed <code>env</code>, <code>expandenv</code>, <code>getHostByName</code>, and <code>fail</code> from sprig functions for security reasons. Templates should use supported helpers and report failures through reconciliation diagnostics.</p>
 </div>
 <p>We provide a couple of convenience functions that help you transform your secrets. This is useful when dealing with PKCS#12 archives or JSON Web Keys (JWK).</p>
 <p>In addition to that you can use over 200+ <a href="http://masterminds.github.io/sprig/">sprig functions</a>. If you feel a function is missing or might be valuable feel free to open an issue and submit a <a href="../../contributing/process/#submitting-a-pull-request">pull request</a>.</p>
@@ -5731,6 +6022,10 @@ created at the provider.</p>
 <tr>
 <td>fromYaml</td>
 <td>Function converts a YAML document into a map[string]any.</td>
+</tr>
+<tr>
+<td>hexdec</td>
+<td>decodes hexadecimal values</td>
 </tr>
 </tbody>
 </table>
@@ -5839,7 +6134,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1087,6 +1087,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1400,6 +1404,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/generator/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/generator/password/" class="md-nav__link">
         
   
@@ -1492,6 +1524,34 @@
     
   
     Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/generator/gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gitlab
   
 
     
@@ -2802,6 +2862,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2891,6 +2957,34 @@
     
   
     AWS Parameter Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-certificate-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certificate Manager
   
 
     
@@ -3003,6 +3097,34 @@
     
   
     BeyondTrust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
   
 
     
@@ -3656,6 +3778,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../crd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes CRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ibm-secrets-manager/" class="md-nav__link">
         
   
@@ -3803,7 +3953,7 @@
   <span class="md-ellipsis">
     
   
-    Github Actions Secrets
+    GitHub Actions and Dependabot Secrets
   
 
     
@@ -5730,7 +5880,11 @@ one supported by this provider. For other secrets engines, please refer to the
 </code></pre></div>
 <strong>NOTE:</strong> In case of a <code>ClusterSecretStore</code>, Be sure to provide <code>namespace</code> for <code>tokenSecretRef</code> with the namespace of the secret that we just created.</p>
 <p>Then create a simple k/v pair at path <code>secret/foo</code>:</p>
-<div class="highlight"><pre><span></span><code>vault kv put secret/foo my-value=s3cr3t
+<div class="highlight"><pre><span></span><code># Creates the secret data
+vault kv put secret/foo my-value=s3cr3t
+
+# Creates custom metadata used by the metadataPolicy: Fetch example below
+vault kv metadata put -custom-metadata=&#39;dev=development&#39; secret/foo
 </code></pre></div>
 <p>Can check kv version using following and check for <code>Options</code> column, it should indicate [version:2]:</p>
 <div class="highlight"><pre><span></span><code>vault secrets list -detailed
@@ -5777,6 +5931,14 @@ one supported by this provider. For other secrets engines, please refer to the
 <span class="c1">#  foobar: czNjcjN0</span>
 </code></pre></div>
 <p>Keep in mind that fetching the labels with <code>metadataPolicy: Fetch</code> only works with KV sercrets engine version v2.</p>
+<p>In addition to the labels defined under <code>custom_metadata</code>, <code>metadataPolicy: Fetch</code> also exposes the following system metadata of the secret: <code>created_time</code>, <code>current_version</code> and <code>delete_version_after</code>. All values are returned as strings. If a <code>custom_metadata</code> label uses the same name as one of these keys, the <code>custom_metadata</code> value takes precedence.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="c1"># metadataPolicy to fetch the current version of the secret</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">version</span>
+<span class="w">    </span><span class="nt">remoteRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metadataPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fetch</span>
+<span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">      </span><span class="nt">property</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">current_version</span>
+</code></pre></div>
 <h4 id="fetching-raw-values">Fetching Raw Values</h4>
 <p>You can fetch all key/value pairs for a given path If you leave the <code>remoteRef.property</code> empty. This returns the json-encoded secret value for that path.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
@@ -6478,14 +6640,18 @@ and pick the best fit for your environment and Vault configuration.</p>
 <li><strong>Token Revocation</strong>: When tokens are evicted from the cache, they are properly revoked from Vault</li>
 </ul>
 <h4 id="when-to-use-token-caching">When to Use Token Caching</h4>
-<p>Token caching is beneficial when:
-- Using authentication methods that generate short-lived tokens (e.g., AppRole, Kubernetes auth)
-- Running multiple ExternalSecrets that use the same SecretStore
-- Experiencing high token generation overhead</p>
-<p>Token caching should <strong>not</strong> be used when:
-- Using static tokens (no performance benefit)
-- Security requirements mandate fresh tokens for each request
-- Memory usage is a concern</p>
+<p>Token caching is beneficial when:</p>
+<ul>
+<li>Using authentication methods that generate short-lived tokens (e.g., AppRole, Kubernetes auth)</li>
+<li>Running multiple ExternalSecrets that use the same SecretStore</li>
+<li>Experiencing high token generation overhead</li>
+</ul>
+<p>Token caching should <strong>not</strong> be used when:</p>
+<ul>
+<li>Using static tokens (no performance benefit)</li>
+<li>Security requirements mandate fresh tokens for each request</li>
+<li>Memory usage is a concern</li>
+</ul>
 <h4 id="read-your-writes">Read Your Writes</h4>
 <p>Vault 1.10.0 and later encodes information in the token to detect the case
 when a server is behind. If a Vault server does not have information about
@@ -6571,7 +6737,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

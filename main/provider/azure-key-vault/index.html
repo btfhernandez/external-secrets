@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1087,6 +1087,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1400,6 +1404,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/generator/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/generator/password/" class="md-nav__link">
         
   
@@ -1492,6 +1524,34 @@
     
   
     Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/generator/gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gitlab
   
 
     
@@ -2802,6 +2862,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2891,6 +2957,34 @@
     
   
     AWS Parameter Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-certificate-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certificate Manager
   
 
     
@@ -3283,6 +3377,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../bitwarden-secrets-manager/" class="md-nav__link">
         
   
@@ -3479,6 +3601,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../crd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes CRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ibm-secrets-manager/" class="md-nav__link">
         
   
@@ -3626,7 +3776,7 @@
   <span class="md-ellipsis">
     
   
-    Github Actions Secrets
+    GitHub Actions and Dependabot Secrets
   
 
     
@@ -5375,7 +5525,7 @@
 <li>Workload Identity</li>
 </ul>
 <p>Regardless of which authentication method is used to authenticate to Azure Key Vault, the identity which is assigned to External Secrets Operator needs to have proper permissions to access the Key Vault. Both <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide">RBAC</a> and legacy <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy">Access Policy</a> based Key Vaults are supported.</p>
-<p>The required permissions depend on the type of objects you want to manage (secrets, keys, certificates) and the operations you want to perform (read, write, delete, etc.). For example, to grant External Secrets Operator permissions to synchronize secrets and certificates using an <code>ExternalSecret</code>, the minimum required permissions are either the <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user">Key Vault Secrets User</a> and <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#key-vault-certificates-user">Key Vault Certificates User</a> RBAC roles, alternatively for Access Policy based Key Vaults, the <code>Get</code> permission over secrets and certificates.</p>
+<p>The required permissions depend on the type of objects you want to manage (secrets, keys, certificates) and the operations you want to perform (read, write, delete, etc.). For example, to grant External Secrets Operator permissions to synchronize secrets and certificates using an <code>ExternalSecret</code>, the minimum required permissions are either the <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user">Key Vault Secrets User</a> and <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#key-vault-certificate-user">Key Vault Certificate User</a> RBAC roles, or alternatively for Access Policy based Key Vaults, the <code>Get</code> permission over secrets and certificates.</p>
 <h4 id="service-principal">Service Principal</h4>
 <p>To use a Service Principal's credentials for authentication, you need to create a Service Principal in Entra ID and grant it the necessary permissions to access the Key Vault. Then, you can create a Kubernetes Secret containing the Service Principal's credentials:</p>
 <ul>
@@ -5568,7 +5718,7 @@
 </code></pre></div>
 <h4 id="azure-stack-configuration">Azure Stack Configuration</h4>
 <p>For Azure Stack Hub or Azure Stack Edge environments:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SecretStore</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-stack-backend</span>
@@ -5821,6 +5971,10 @@
 <p class="admonition-title">Note</p>
 <p>Omitting <code>contentType</code> (or setting it to an empty string) is interpreted as "don't change" rather than "clear": if the secret in Azure Key Vault already has a <code>ContentType</code> set, it will be preserved on update. There is currently no way to clear an existing <code>ContentType</code> via PushSecret — if you need to remove it, delete the secret from Azure Key Vault directly and let PushSecret recreate it.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>expirationDate</code> is applied only when the SecretStore uses the legacy SDK (the default). When <code>useAzureSDK: true</code> is set (required for <code>customCloudConfig</code>, including Azure Stack and Azure China Workload Identity), <code>expirationDate</code> is currently ignored: the secret is pushed without an expiry, and changing <code>expirationDate</code> alone does not trigger an update. If you need an expiry in those environments, set it directly on the secret in Azure Key Vault.</p>
+</div>
 <h4 id="pushing-to-a-key">Pushing to a Key</h4>
 <p>The first step is to generate a valid private key. Supported formats include <code>PRIVATE KEY</code>, <code>RSA PRIVATE KEY</code> AND <code>EC PRIVATE KEY</code> (EC/PKCS1/PKCS8 types). After uploading your key to a Kubernetes Secret, the next step is to create a PushSecret manifest with the following configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -6008,7 +6162,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

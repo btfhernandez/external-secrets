@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1087,6 +1087,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1400,6 +1404,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/generator/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/generator/password/" class="md-nav__link">
         
   
@@ -1492,6 +1524,34 @@
     
   
     Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/generator/gitlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gitlab
   
 
     
@@ -2800,6 +2860,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2888,6 +2954,34 @@
     
   
     AWS Parameter Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/aws-certificate-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certificate Manager
   
 
     
@@ -3000,6 +3094,34 @@
     
   
     BeyondTrust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../provider/beyondtrustworkloadcredentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeyondTrust Workload Credentials
   
 
     
@@ -3216,6 +3338,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../provider/crd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes CRD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../provider/ibm-secrets-manager/" class="md-nav__link">
         
   
@@ -3363,7 +3513,7 @@
   <span class="md-ellipsis">
     
   
-    Github Actions Secrets
+    GitHub Actions and Dependabot Secrets
   
 
     
@@ -5062,17 +5212,23 @@ To integrate with Bitwarden <strong>Secrets Manager</strong>, reference the <a h
 <ul>
 <li>Bitwarden account (it also works with Vaultwarden!)</li>
 <li>A Kubernetes secret which contains your Bitwarden credentials</li>
-<li>A Docker image running the Bitwarden CLI. You could use <code>ghcr.io/charlesthomas/bitwarden-cli:2023.12.1</code> or build your own.</li>
+<li>A Docker image running the Bitwarden CLI. You could use <code>ghcr.io/charlesthomas/bitwarden-cli:2026.3.0</code> or build your own.</li>
 </ul>
 <p>Here is an example of a Dockerfile used to build the image:
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">debian:sid</span>
 
-<span class="k">ENV</span><span class="w"> </span><span class="nv">BW_CLI_VERSION</span><span class="o">=</span><span class="m">2023</span>.12.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">BW_CLI_VERSION</span><span class="o">=</span><span class="m">2025</span>.12.1
+<span class="k">ARG</span><span class="w"> </span>TARGETARCH
 
 <span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span>unzip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>wget<span class="w"> </span>https://github.com/bitwarden/clients/releases/download/cli-v<span class="si">${</span><span class="nv">BW_CLI_VERSION</span><span class="si">}</span>/bw-linux-<span class="si">${</span><span class="nv">BW_CLI_VERSION</span><span class="si">}</span>.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>unzip<span class="w"> </span>bw-linux-<span class="si">${</span><span class="nv">BW_CLI_VERSION</span><span class="si">}</span>.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGETARCH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">BW_ARCH</span><span class="o">=</span><span class="s2">&quot;-arm64&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">BW_ARCH</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">fi</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span>https://github.com/bitwarden/clients/releases/download/cli-v<span class="si">${</span><span class="nv">BW_CLI_VERSION</span><span class="si">}</span>/bw-oss-linux<span class="si">${</span><span class="nv">BW_ARCH</span><span class="si">}</span>-<span class="si">${</span><span class="nv">BW_CLI_VERSION</span><span class="si">}</span>.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>unzip<span class="w"> </span>bw-oss-linux<span class="si">${</span><span class="nv">BW_ARCH</span><span class="si">}</span>-<span class="si">${</span><span class="nv">BW_CLI_VERSION</span><span class="si">}</span>.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>chmod<span class="w"> </span>+x<span class="w"> </span>bw<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>mv<span class="w"> </span>bw<span class="w"> </span>/usr/local/bin/bw<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>rm<span class="w"> </span>-rfv<span class="w"> </span>*.zip
@@ -5100,8 +5256,34 @@ bw<span class="w"> </span>config<span class="w"> </span>server<span class="w"> <
 bw<span class="w"> </span>unlock<span class="w"> </span>--check
 
 <span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Running `bw server` on port 8087&#39;</span>
-bw<span class="w"> </span>serve<span class="w"> </span>--hostname<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="c1">#--disable-origin-protection</span>
+bw<span class="w"> </span>serve<span class="w"> </span>--hostname<span class="w"> </span>all
 </code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Bitwarden CLI 2026.6.0 and later: use <code>--hostname all</code></p>
+<p><code>bw serve</code> 2026.6.0 added a Host header allowlist on top of its existing
+Origin header check. With <code>--hostname 0.0.0.0</code> the allowlist is built from
+the bound hostname, so it contains only <code>localhost:8087</code>, <code>127.0.0.1:8087</code>,
+<code>[::1]:8087</code> and <code>0.0.0.0:8087</code>.</p>
+<p>The webhook provider sends whatever authority the SecretStore <code>url</code> carries
+as the <code>Host</code> header. For a store pointing at
+<code>http://bitwarden-cli.bitwarden.svc:8087</code> that authority is not on the
+allowlist, so <code>bw serve</code> answers <code>403</code> and logs:</p>
+<div class="highlight"><pre><span></span><code>Blocking request with disallowed Host &quot;bitwarden-cli.bitwarden.svc:8087&quot;
+</code></pre></div>
+<p>Every ExternalSecret backed by these stores fails.</p>
+<p><code>--hostname all</code> binds every interface and skips the Host allowlist, which
+is why the example above uses it. It is also accepted by older releases, so
+the same entrypoint works either way.</p>
+<p>Prefer this over <code>--disable-origin-protection</code>. That flag turns off the
+Origin header check as well, whereas <code>--hostname all</code> leaves it in place.
+The webhook provider does not send an <code>Origin</code> header, so it is unaffected.</p>
+<p>Pinning the Host from the store does not work as a substitute. Entries in
+the store's <code>headers</code> are applied with <code>Header.Add</code>, and Go takes the
+request Host from the URL rather than from <code>Header["Host"]</code>, so a
+<code>Host: localhost:8087</code> header is silently ignored.</p>
+<p>Neither option authenticates callers. The NetworkPolicy below is what
+restricts access to <code>bw serve</code>, so deploy it.</p>
+</div>
 <h2 id="deploy-bitwarden-credentials">Deploy Bitwarden credentials</h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">data</span><span class="p">:</span>
@@ -5478,7 +5660,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
